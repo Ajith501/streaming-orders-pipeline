@@ -1,0 +1,17 @@
+# Spark output
+output/
+
+# checkpoints
+checkpoints/
+
+# airflow logs
+logs/
+
+# python cache
+__pycache__/
+
+# mac files
+.DS_Store
+
+# env files
+.env
