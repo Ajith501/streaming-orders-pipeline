@@ -1,15 +1,27 @@
-# Streaming Orders Pipeline
+# Kafka Spark Iceberg Data Pipeline
 
-Real-time streaming ETL pipeline using Kafka, Spark Structured Streaming, and Airflow.
+## Overview
+End-to-end real-time data pipeline using Kafka, Spark Structured Streaming, Apache Iceberg, and Airflow.
 
 ## Architecture
-
-Kafka → Spark Streaming → Bronze → Silver → Gold → DuckDB
+Kafka → Spark → Iceberg → Airflow → Revenue Aggregation → Compaction
 
 ## Features
+- Multi-topic streaming (orders & payments)
+- Micro-batch processing using trigger-once
+- Iceberg tables for ACID and scalability
+- Revenue aggregation pipeline
+- Compaction to handle small file problem
 
-- Kafka event ingestion
-- Spark Structured Streaming
-- Watermark + window aggregations
-- Data quality validation
-- Airflow orchestration with micro batch ETL
+## Tech Stack
+- Apache Kafka (Redpanda)
+- Apache Spark (PySpark)
+- Apache Iceberg
+- Apache Airflow
+- Docker
+
+## Key Learnings
+- Handling streaming + batch hybrid pipelines
+- Debugging Iceberg metadata issues
+- Managing Kafka offsets and checkpoints
+- Solving small file problem using compaction
