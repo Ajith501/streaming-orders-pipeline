@@ -1,26 +1,20 @@
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.operators.bash import BashOperator
 from datetime import datetime
 
-def extract():
-    print("Extracting data...")
-
-def transform():
-    print("Transforming data...")
-
-def load():
-    print("Loading data...")
-
 with DAG(
-    dag_id="etl_demo",
+    dag_id="revenue_spark_etl",
     start_date=datetime(2024, 1, 1),
-    schedule="@daily",
+    schedule="*/5 * * * *",
     catchup=False,
-    tags=["etl"]
 ) as dag:
 
-    t1 = PythonOperator(task_id="extract", python_callable=extract)
-    t2 = PythonOperator(task_id="transform", python_callable=transform)
-    t3 = PythonOperator(task_id="load", python_callable=load)
-
-    t1 >> t2 >> t3
+    run_spark = BashOperator(
+        task_id="run_spark_job",
+        bash_command=(
+            "spark-submit "
+            "--master local[*] "
+            "--packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1 "
+            "/opt/airflow/scripts/revenue_script.py"
+        ),
+    )

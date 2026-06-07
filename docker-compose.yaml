@@ -24,6 +24,7 @@ services:
       AIRFLOW__WEBSERVER__SECRET_KEY: airflow_secret_key_123
     volumes:
       - ./dags:/opt/airflow/dags
+      - ./scripts:/opt/airflow/scripts
     ports:
       - "8081:8080"
     command: >
@@ -45,6 +46,7 @@ services:
       AIRFLOW__WEBSERVER__SECRET_KEY: airflow_secret_key_123
     volumes:
       - ./dags:/opt/airflow/dags
+      - ./scripts:/opt/airflow/scripts
     command: airflow scheduler
 
   redpanda:

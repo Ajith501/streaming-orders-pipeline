@@ -1,17 +1,16 @@
-# Spark output
-output/
+# Spark / Iceberg
+dags/warehouse/
+dags/output/
 
-# checkpoints
-checkpoints/
+# Checkpoints
+**/checkpoints/
 
-# airflow logs
-logs/
-
-# python cache
+# Python
 __pycache__/
+*.pyc
 
-# mac files
+# Logs
+*.log
+
+# Mac
 .DS_Store
-
-# env files
-.env
