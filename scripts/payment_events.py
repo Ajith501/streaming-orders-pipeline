@@ -35,4 +35,4 @@ while True:
     print(json.dumps(event), flush=True)
 
     i += 1
-    time.sleep(0.002)
+    time.sleep(0.05)

@@ -26,4 +26,4 @@ while True:   #  infinite stream
     i += 1
 
     # control speed
-    time.sleep(0.002)
+    time.sleep(0.05)
